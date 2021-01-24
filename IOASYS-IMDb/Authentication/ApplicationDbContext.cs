@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using IOASYS_IMDb.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace IOASYS_IMDb.Authentication
@@ -13,5 +14,19 @@ namespace IOASYS_IMDb.Authentication
         {
             base.OnModelCreating(builder);
         }
+
+        public DbSet<Filme> Filmes { get; set; }
+
+        public DbSet<Categoria> Categorias { get; set; }
+
+        public DbSet<Diretor> Diretors { get; set; }
+
+        public DbSet<Ator> Ators { get; set; }
+
+        public DbSet<AtorFilme> AtorFilmes { get; set; }
+
+
+
+
     }
 }

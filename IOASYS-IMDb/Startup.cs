@@ -3,12 +3,16 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using System;
+using System.IO;
+using System.Reflection;
 using System.Text;
 
 
@@ -60,14 +64,51 @@ namespace IOASYS_IMDb
                 };
             });
 
+            services.AddApiVersioning(option =>
+            {
 
+                option.AssumeDefaultVersionWhenUnspecified = true;
+                option.DefaultApiVersion = new ApiVersion(1, 0);
+                option.ReportApiVersions = true;
 
+            }
 
+               );
 
+            services.AddControllers()
+                 .AddNewtonsoftJson(options =>
+                 {
+                     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+
+                 }
+                 );
+
+            services.AddControllers();
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "IOASYS_IMDb", Version = "v1" });
+
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "IOASYS-IMDb",
+                    Version = "v1",
+                    Description = "Catalogo de Filmes IMDb",
+                    TermsOfService = new Uri("https://github.com/caioragazzini"),
+                    Contact = new OpenApiContact
+                    {
+                        Email = "caiovrragazzini@gmail.com",
+                        Name = "Caio Ragazzini",
+                        Url = new Uri("http://www.caioragazzini.com/")
+
+                    }
+
+                });
+
+                var xmlFile = $"{Assembly.GetEntryAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
+
+
             });
         }
 

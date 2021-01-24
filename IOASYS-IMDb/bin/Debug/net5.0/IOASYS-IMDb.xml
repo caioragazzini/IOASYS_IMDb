@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>IOASYS-IMDb</name>
+    </assembly>
+    <members>
+        <member name="M:IOASYS_IMDb.Controllers.WeatherForecastController.Get">
+            <summary>
+            Obtem todos os AtorFilme
+            </summary>
+            <returns>Objetos AtorFilme</returns>
+        </member>
+    </members>
+</doc>
