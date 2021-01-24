@@ -14,6 +14,7 @@ using IOASYS_IMDb.Authentication;
 
 namespace IOASYS_IMDb.Controllers
 {
+    [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
     public class AuthenticateController : ControllerBase

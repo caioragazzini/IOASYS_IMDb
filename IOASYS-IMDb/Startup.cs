@@ -92,7 +92,7 @@ namespace IOASYS_IMDb
                 {
                     Title = "IOASYS-IMDb",
                     Version = "v1",
-                    Description = "Catalogo de Filmes IMDb",
+                    Description = "IOASYS-IMDb-Catalogo de Filmes IMDb",
                     TermsOfService = new Uri("https://github.com/caioragazzini"),
                     Contact = new OpenApiContact
                     {

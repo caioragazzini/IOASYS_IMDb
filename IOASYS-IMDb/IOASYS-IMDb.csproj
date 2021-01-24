@@ -5,6 +5,12 @@
     <RootNamespace>IOASYS_IMDb</RootNamespace>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(Nowarn);1591</NoWarn>
+
+  </PropertyGroup>
+
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>C:\IOASYS-IMDb\IOASYS-IMDb\IOASYS-IMDb.xml</DocumentationFile>
   </PropertyGroup>

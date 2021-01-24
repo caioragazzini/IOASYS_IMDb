@@ -4,11 +4,287 @@
         <name>IOASYS-IMDb</name>
     </assembly>
     <members>
-        <member name="M:IOASYS_IMDb.Controllers.WeatherForecastController.Get">
+        <member name="M:IOASYS_IMDb.Controllers.AtorController.Get">
+            <summary>
+            Obtem todos os Atores
+            </summary>
+            <returns>Objetos Ator</returns>
+        </member>
+        <member name="M:IOASYS_IMDb.Controllers.AtorController.Get(System.Int32)">
+            <summary>
+            Obtem um Ator pelo seu Id
+            </summary>
+             Obtem um Ator pelo seu Id
+            <returns>Objetos Ator</returns>
+        </member>
+        <member name="M:IOASYS_IMDb.Controllers.AtorController.Post(IOASYS_IMDb.Models.Ator)">
+             <summary>
+             Inclui um novo Ator
+             </summary>
+             <remarks>
+             Exemplo de request:
+            
+                 POST api/Ator
+                 {
+                    "atorId": 1,
+                    "nome": "Nome do Ator com 150 caracteres no maximo"
+                   
+                 }
+             </remarks>
+             <param name="ator">objeto Ator</param>
+             <returns>O objeto Ator incluido</returns>
+        </member>
+        <member name="M:IOASYS_IMDb.Controllers.AtorController.Put(System.Int32,IOASYS_IMDb.Models.Ator)">
+             <summary>
+             Atualiza um Ator
+             </summary>
+             <remarks>
+             Exemplo de request:
+            
+                 PUT api/Ator
+                 {
+                    "atorId": 1,
+                    "nome": "Nome do Ator com 150 caracteres no maximo"
+                   
+                 }
+             </remarks>
+             <param name="ator">objeto Ator</param>
+             <returns>O objeto Ator atualizado</returns>
+        </member>
+        <member name="M:IOASYS_IMDb.Controllers.AtorController.Delete(System.Int32)">
+             <summary>
+             Exclui um Ator
+             </summary>
+             <remarks>
+             Exemplo de request:
+            
+                 PUT api/Ator
+                 {
+                    "atorId": 1
+                   
+                   
+                 }
+             </remarks>
+             <param name="id">objeto Ator</param>
+             <returns>O objeto Ator excluido</returns>
+        </member>
+        <member name="M:WebApiFilmesIMDb.Controllers.AtorFilmeController.Get">
             <summary>
             Obtem todos os AtorFilme
             </summary>
             <returns>Objetos AtorFilme</returns>
+        </member>
+        <member name="M:WebApiFilmesIMDb.Controllers.AtorFilmeController.Get(System.Int32)">
+            <summary>
+            Obtem um AtorFilme pelo seu Id
+            </summary>
+             Obtem um AtorFilme pelo seu Id
+            <returns>Objetos AtorFilme</returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:WebApiFilmesIMDb.Controllers.AtorFilmeController.Post(IOASYS_IMDb.Models.AtorFilme)" -->
+        <member name="M:WebApiFilmesIMDb.Controllers.CategoriaController.Get">
+            <summary>
+            Obtem todos as Categorias
+            </summary>
+            <returns>Objetos Categoria</returns>
+        </member>
+        <member name="M:WebApiFilmesIMDb.Controllers.CategoriaController.Get(System.Int32)">
+            <summary>
+            Obtem uma Categoria pelo seu Id
+            </summary>
+             Obtem uma Categoria pelo seu Id
+            <returns>Objetos Categoria</returns>
+        </member>
+        <member name="M:WebApiFilmesIMDb.Controllers.CategoriaController.Post(IOASYS_IMDb.Models.Categoria)">
+             <summary>
+             Inclui uma nova Categoria
+             </summary>
+             <remarks>
+             Exemplo de request:
+            
+                 POST api/Categoria
+                 {
+                    "categoriaId": 1,
+                    "nome": "Nome da categoria com 80 caracteres no maximo"
+                   
+                 }
+             </remarks>
+             <param name="categoria">objeto Ator</param>
+             <returns>O objeto Ator incluido</returns>
+        </member>
+        <member name="M:WebApiFilmesIMDb.Controllers.CategoriaController.Put(System.Int32,IOASYS_IMDb.Models.Categoria)">
+             <summary>
+             Atualiza uma Categoria
+             </summary>
+             <remarks>
+             Exemplo de request:
+            
+                 PUT api/Categoria
+                 {
+                    "categoriaId": 1,
+                    "nome": "Nome da categoria com 80 caracteres no maximo"
+                   
+                 }
+             </remarks>
+             <param name="categoria">objeto Ator</param>
+             <returns>O objeto Ator Atualizado</returns>
+        </member>
+        <member name="M:WebApiFilmesIMDb.Controllers.CategoriaController.Delete(System.Int32)">
+             <summary>
+             Exclui uma nova Categoria
+             </summary>
+             <remarks>
+             Exemplo de request:
+            
+                 DELETE api/Categoria
+                 {
+                    "categoriaId": 1
+                   
+                   
+                 }
+             </remarks>
+             <param name="id">objeto Ator</param>
+             <returns>O objeto Categoria excluido</returns>
+        </member>
+        <member name="M:WebApiFilmesIMDb.Controllers.DiretorController.Get">
+            <summary>
+            Obtem todos os Diretores
+            </summary>
+            <returns>Objetos Diretor</returns>
+        </member>
+        <member name="M:WebApiFilmesIMDb.Controllers.DiretorController.Get(System.Int32)">
+            <summary>
+            Obtem um Diretor pelo seu Id
+            </summary>
+             Obtem um Diretor pelo seu Id
+            <returns>ObjetosDiretor</returns>
+        </member>
+        <member name="M:WebApiFilmesIMDb.Controllers.DiretorController.Post(IOASYS_IMDb.Models.Diretor)">
+             <summary>
+             Inclui um novo Diretor
+             </summary>
+             <remarks>
+             Exemplo de request:
+            
+                 POST api/Diretor
+                 {
+                    "diretorId": 1,
+                    "nome": "Nome do Diretor com 150 caracteres no maximo"
+                   
+                 }
+             </remarks>
+             <param name="diretor">objeto Diretor</param>
+             <returns>O objeto Diretor incluido</returns>
+        </member>
+        <member name="M:WebApiFilmesIMDb.Controllers.DiretorController.Put(System.Int32,IOASYS_IMDb.Models.Diretor)">
+             <summary>
+             Atualiza um Diretor
+             </summary>
+             <remarks>
+             Exemplo de request:
+            
+                 PUT api/Diretor
+                 {
+                    "diretorId": 1,
+                    "nome": "Nome do Diretor com 150 caracteres no maximo"
+                   
+                 }
+             </remarks>
+             <param name="diretor">objeto Diretor</param>
+             <returns>O objeto Diretor atualizado</returns>
+        </member>
+        <member name="M:WebApiFilmesIMDb.Controllers.DiretorController.Delete(System.Int32)">
+             <summary>
+             Exclui um Diretor
+             </summary>
+             <remarks>
+             Exemplo de request:
+            
+                 PUT api/Diretor
+                 {
+                    "diretorId": 1
+                    
+                   
+                 }
+             </remarks>
+             <param name="id">objeto Diretor</param>
+             <returns>O objeto Diretor Excluido</returns>
+        </member>
+        <member name="M:WebApiFilmesIMDb.Controllers.FilmesController.Get">
+            <summary>
+            Obtem todos os Filmes
+            </summary>
+            <returns>ObjetosFilme</returns>
+        </member>
+        <member name="M:WebApiFilmesIMDb.Controllers.FilmesController.Get(System.Int32)">
+            <summary>
+            Obtem um Filme pelo seu Id
+            </summary>
+             Obtem um Filme pelo seu Id
+            <returns>Objetos Filmes</returns>
+        </member>
+        <member name="M:WebApiFilmesIMDb.Controllers.FilmesController.Post(IOASYS_IMDb.Models.Filme)">
+             <summary>
+             Inclui um novo Filme
+             </summary>
+             <remarks>
+             Exemplo de request:
+            
+                 POST api/AtorFilme
+                 {
+                    "FilmeId": 1,
+                    "titulo": "titulo do filme com 80 caracteres no maximo",
+                    "duracao": 120,
+                    "descricao": "Descrição do Filme com 300 caracteres no maximo",
+                    "anoLancamento": 04/03/1978,
+                    "nota": de 0 a 4,
+                    "categoriaId": id vinculado a tabela de Categorias,
+                    "diretorId": id vinculado a tabela de Diretor
+                   
+                 }
+             </remarks>
+             <param name="filme">objeto Filme</param>
+             <returns>O objeto Filme incluido</returns>
+        </member>
+        <member name="M:WebApiFilmesIMDb.Controllers.FilmesController.Put(System.Int32,IOASYS_IMDb.Models.Filme)">
+             <summary>
+             Atualiza um Filme
+             </summary>
+             <remarks>
+             Exemplo de request:
+            
+                 PUT api/AtorFilme
+                 {
+                    "FilmeId": 1,
+                    "titulo": "titulo do filme com 80 caracteres no maximo",
+                    "duracao": 120,
+                    "descricao": "Descrição do Filme com 300 caracteres no maximo",
+                    "anoLancamento": 04/03/1978,
+                    "nota": de 0 a 4,
+                    "categoriaId": id vinculado a tabela de Categorias,
+                    "diretorId": id vinculado a tabela de Diretor
+                   
+                 }
+             </remarks>
+             <param name="filme">objeto Filme</param>
+             <returns>O objeto Filme atualizado</returns>
+        </member>
+        <member name="M:WebApiFilmesIMDb.Controllers.FilmesController.Delete(System.Int32)">
+             <summary>
+             Exclui um Filme
+             </summary>
+             <remarks>
+             Exemplo de request:
+            
+                 POST api/AtorFilme
+                 {
+                    "FilmeId": 1
+                   
+                   
+                 }
+             </remarks>
+             <param name="id">objeto Filme</param>
+             <returns>O objeto Filme exluido</returns>
         </member>
     </members>
 </doc>
