@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Ov8T39JtTKkKUdRpM0PN9j0M4ss1rPTe+EHnPGC8PvjrDbTsx6Ie6m65LcrNJDv5l7B4Qp2dmVaLcS6V3EMqxg==",
+  "dgSpecHash": "9Y1A6+HUrGjr44yByCTcJNY0czW6xi5Z1lLAg0tSIo5XPO8W/HAfLb3T9BUSe3bVavufoXbzHgtQ21jLQSFbxQ==",
   "success": true,
   "projectFilePath": "C:\\IOASYS-IMDb\\IOASYS-IMDb\\IOASYS-IMDb.csproj",
   "expectedPackageFiles": [
@@ -61,6 +61,8 @@
     "C:\\Users\\caiov\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
     "C:\\Users\\caiov\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\caiov\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
+    "C:\\Users\\caiov\\.nuget\\packages\\mysqlconnector\\1.1.0\\mysqlconnector.1.1.0.nupkg.sha512",
+    "C:\\Users\\caiov\\.nuget\\packages\\pomelo.entityframeworkcore.mysql\\5.0.0-alpha.2\\pomelo.entityframeworkcore.mysql.5.0.0-alpha.2.nupkg.sha512",
     "C:\\Users\\caiov\\.nuget\\packages\\runtime.native.system\\4.3.0\\runtime.native.system.4.3.0.nupkg.sha512",
     "C:\\Users\\caiov\\.nuget\\packages\\swashbuckle.aspnetcore\\5.6.3\\swashbuckle.aspnetcore.5.6.3.nupkg.sha512",
     "C:\\Users\\caiov\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\5.6.3\\swashbuckle.aspnetcore.swagger.5.6.3.nupkg.sha512",
