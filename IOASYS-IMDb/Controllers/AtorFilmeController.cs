@@ -96,7 +96,13 @@ namespace WebApiFilmesIMDb.Controllers
 
         }
 
-
+        /// <summary>
+        /// Atualiza um novo AtorFilme
+        /// </summary>
+        /// <remarks>
+        /// <param name="atorFilme">objeto AtorFilme</param>
+        /// <returns>O objeto AtorFilme incluido</returns>
+        /// <remarks>O objeto AtorFilme incluido</remarks>
         [HttpPut("{id}")]
         public ActionResult Put(int id, [FromBody] AtorFilme atorFilme)
         {
@@ -121,7 +127,13 @@ namespace WebApiFilmesIMDb.Controllers
 
         }
 
-
+        /// <summary>
+        /// Exclui um AtorFilme
+        /// </summary>
+        /// <remarks>
+        /// <param name="atorFilme">objeto AtorFilme</param>
+        /// <returns>O objeto AtorFilme incluido</returns>
+        /// <remarks>O objeto AtorFilme incluido</remarks>
         [HttpDelete("{id}")]
         public ActionResult<AtorFilme> Delete(int id)
         {

@@ -6,19 +6,32 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Dapper;
+using System.Text;
+using Pomelo.EntityFrameworkCore.MySql;
+using Microsoft.Data.SqlClient;
+using Microsoft.IdentityModel.Protocols;
+using System.Data;
+using System.Configuration;
+using System.Data.Common;
+using Microsoft.Extensions.Configuration;
+using MySqlConnector;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebApiFilmesIMDb.Controllers
 {
-
+    
     [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
     public class FilmesController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
-
-        public FilmesController(ApplicationDbContext context)
+        private IConfiguration _config;
+      
+        public FilmesController(ApplicationDbContext context, IConfiguration configuration)
         {
+            _config = configuration;
             _context = context;
         }
 
@@ -43,14 +56,168 @@ namespace WebApiFilmesIMDb.Controllers
 
 
         }
-
-
-        [HttpGet("AtorFilmes")]
-        public ActionResult<IEnumerable<Filme>> GetFilmesAtor()
+                
+        /// <summary>
+        ///Obtem um Filme pelo nome do Ator
+        /// </summary>
+        /// <remarks>
+        /// Exemplo de request:
+        ///
+        ///     Get /api/Filmes/FilmesNomeAtor
+        ///     {
+        ///       
+        ///        "nome": "Nome do Ator com 150 caracteres no maximo"
+        ///       
+        ///     }
+        /// </remarks>
+        /// <param name="nome">objeto Filme</param>
+        /// <returns>O objeto Filme</returns>
+        [HttpGet("FilmesNomeAtor")]
+        public ActionResult<IEnumerable<Filme>> GetFilmesAtorNome(string nome)
         {
             try
             {
-                return _context.Filmes.Include(x => x.AtorFilmes).ToList();
+                
+
+                using (MySqlConnection conexao = new MySqlConnection( _config.GetConnectionString("ConnStr")))
+                {
+                    conexao.Open();
+
+                   var teste= conexao.Query<dynamic>("SELECT f.Titulo,a.Nome FROM filme f inner join atorfilme u on f.FilmeId = u.FilmeId inner join ator a on a.AtorId= u.AtorId Where (a.Nome Like \'%" + (nome + "%\')"));
+
+                    return Ok(teste);
+
+                }
+                
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                     "Erro ao tentar obter os Atores e Filmes do banco de dados");
+
+            }
+
+
+        }
+
+
+        /// <summary>
+        ///Obtem um Filme pelo nome do Diretor
+        /// </summary>
+        /// <remarks>
+        /// Exemplo de request:
+        ///
+        ///     Get /api/Filmes/FilmesDiretor
+        ///     {
+        ///       
+        ///        "nome": "Nome do Diretor com 150 caracteres no maximo"
+        ///       
+        ///     }
+        /// </remarks>
+        /// <param name="nome">objeto Filme</param>
+        /// <returns>O objeto Filme</returns>
+        [HttpGet("FilmesDiretor")]
+        public ActionResult<IEnumerable<Filme>> GetFilmesDiretor(string nome)
+        {
+            try
+            {
+
+
+                using (MySqlConnection conexao = new MySqlConnection(_config.GetConnectionString("ConnStr")))
+                {
+                    conexao.Open();
+
+                    var teste = conexao.Query<dynamic>("SELECT f.Titulo FROM filme f inner join diretor d on f.DiretorId = d.DiretorId Where (d.Nome Like \'%" + (nome + "%\')"));
+
+                    return Ok(teste);
+
+                }
+
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                     "Erro ao tentar obter os Atores e Filmes do banco de dados");
+
+            }
+
+
+        }
+
+
+        /// <summary>
+        ///Obtem um Filme pelo nome da categira 
+        /// </summary>
+        /// <remarks>
+        /// Exemplo de request:
+        ///
+        ///     Get /api/Filmes/FilmesGenero
+        ///     {
+        ///       
+        ///        "nome": "Nome da Categoria com 150 caracteres no maximo"
+        ///       
+        ///     }
+        /// </remarks>
+        /// <param name="nome">objeto Filme</param>
+        /// <returns>O objeto Filme</returns>
+        [HttpGet("FilmesGenero")]
+        public ActionResult<IEnumerable<Filme>> GetFilmesGenero(string nome)
+        {
+            try
+            {
+
+
+                using (MySqlConnection conexao = new MySqlConnection(_config.GetConnectionString("ConnStr")))
+                {
+                    conexao.Open();
+
+                    var teste = conexao.Query<dynamic>("SELECT f.Titulo FROM filme f inner join categoria c on f.CategoriaId = c.CategoriaId Where (c.Nome Like \'%" + (nome + "%\')"));
+
+                    return Ok(teste);
+
+                }
+
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                     "Erro ao tentar obter os Atores e Filmes do banco de dados");
+
+            }
+
+
+        }
+
+        /// <summary>
+        ///Obtem um Filme pelo Titulo e retorna a media dos votos recebidos e demais informações
+        /// </summary>
+        /// <remarks>
+        /// Exemplo de request:
+        ///
+        ///     Get /api/Filmes/FilmesMedia
+        ///     {
+        ///       
+        ///        "nome": "Nome do Titulo com 150 caracteres no maximo"
+        ///       
+        ///     }
+        /// </remarks>
+        /// <param name="nome">objeto Filme</param>
+        /// <returns>O objeto Filme</returns>
+        [HttpGet("FilmesMedia")]
+        public ActionResult<IEnumerable<Filme>> GetFilmesMedia(string nome)
+        {
+            try
+            {
+                using (MySqlConnection conexao = new MySqlConnection(_config.GetConnectionString("ConnStr")))
+                {
+                    conexao.Open();
+
+                    var teste = conexao.Query<dynamic>("SELECT avg(f.Nota),f.Titulo,f.Duracao,f.Descricao,f.AnoLancamento FROM filme f Where (f.Titulo Like \'%" + (nome + "%\')"));
+
+                    return Ok(teste);
+
+                }
+
             }
             catch (Exception)
             {
@@ -88,8 +255,12 @@ namespace WebApiFilmesIMDb.Controllers
         }
 
 
+
+
+        //POST/ PUT/ DELETE
+
         /// <summary>
-        /// Inclui um novo Filme
+        /// Inclui um novo Filme Necessario ser usuario Admin
         /// </summary>
         /// <remarks>
         /// Exemplo de request:
@@ -109,6 +280,8 @@ namespace WebApiFilmesIMDb.Controllers
         /// </remarks>
         /// <param name="filme">objeto Filme</param>
         /// <returns>O objeto Filme incluido</returns>
+        /// 
+        [Authorize(Roles = UserRoles.Admin)]
         [HttpPost]
         public ActionResult Post([FromBody] Filme filme)
         {
@@ -136,7 +309,7 @@ namespace WebApiFilmesIMDb.Controllers
         /// <remarks>
         /// Exemplo de request:
         ///
-        ///     PUT api/AtorFilme
+        ///     PUT api/Filme/id
         ///     {
         ///        "FilmeId": 1,
         ///        "titulo": "titulo do filme com 80 caracteres no maximo",
@@ -211,6 +384,21 @@ namespace WebApiFilmesIMDb.Controllers
             }
 
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
 

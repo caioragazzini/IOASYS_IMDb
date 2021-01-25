@@ -72,3 +72,4 @@ C:\IOASYS-IMDb\IOASYS-IMDb\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJ
 C:\IOASYS-IMDb\IOASYS-IMDb\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
 C:\IOASYS-IMDb\IOASYS-IMDb\bin\Debug\net5.0\IOASYS-IMDb.xml
 C:\IOASYS-IMDb\IOASYS-IMDb\obj\Debug\net5.0\IOASYS-IMDb.csprojAssemblyReference.cache
+C:\IOASYS-IMDb\IOASYS-IMDb\bin\Debug\net5.0\Dapper.dll

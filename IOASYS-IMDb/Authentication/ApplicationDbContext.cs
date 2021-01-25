@@ -25,8 +25,8 @@ namespace IOASYS_IMDb.Authentication
 
         public DbSet<AtorFilme> AtorFilmes { get; set; }
 
+        public DbSet<Voto> Voto { get; set; }
 
-
-
+        public DbSet<Usuario> Usuarios { get; set; }
     }
 }

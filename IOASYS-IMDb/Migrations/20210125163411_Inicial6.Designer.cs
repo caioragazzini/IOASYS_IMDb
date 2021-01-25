@@ -3,14 +3,16 @@ using System;
 using IOASYS_IMDb.Authentication;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace IOASYS_IMDb.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210125163411_Inicial6")]
+    partial class Inicial6
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -173,6 +175,9 @@ namespace IOASYS_IMDb.Migrations
                     b.Property<int>("Duracao")
                         .HasColumnType("int");
 
+                    b.Property<string>("Nome")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
                     b.Property<string>("Titulo")
                         .IsRequired()
                         .HasMaxLength(80)
@@ -203,7 +208,7 @@ namespace IOASYS_IMDb.Migrations
                     b.ToTable("Usuario");
                 });
 
-            modelBuilder.Entity("IOASYS_IMDb.Models.Voto", b =>
+            modelBuilder.Entity("IOASYS_IMDb.Models.Votacao", b =>
                 {
                     b.Property<int>("VotacaoId")
                         .ValueGeneratedOnAdd()
@@ -215,16 +220,19 @@ namespace IOASYS_IMDb.Migrations
                     b.Property<int>("Nota")
                         .HasColumnType("int");
 
-                    b.Property<string>("UsuarioId")
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UsuarioId1")
                         .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.HasKey("VotacaoId");
 
                     b.HasIndex("FilmeId");
 
-                    b.HasIndex("UsuarioId");
+                    b.HasIndex("UsuarioId1");
 
-                    b.ToTable("Voto");
+                    b.ToTable("Votacao");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -393,17 +401,17 @@ namespace IOASYS_IMDb.Migrations
                     b.Navigation("Diretor");
                 });
 
-            modelBuilder.Entity("IOASYS_IMDb.Models.Voto", b =>
+            modelBuilder.Entity("IOASYS_IMDb.Models.Votacao", b =>
                 {
                     b.HasOne("IOASYS_IMDb.Models.Filme", "Filme")
-                        .WithMany("Voto")
+                        .WithMany("Votacao")
                         .HasForeignKey("FilmeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("IOASYS_IMDb.Models.Usuario", "Usuario")
-                        .WithMany("Voto")
-                        .HasForeignKey("UsuarioId");
+                        .WithMany("Votacao")
+                        .HasForeignKey("UsuarioId1");
 
                     b.Navigation("Filme");
 
@@ -480,12 +488,12 @@ namespace IOASYS_IMDb.Migrations
                 {
                     b.Navigation("AtorFilmes");
 
-                    b.Navigation("Voto");
+                    b.Navigation("Votacao");
                 });
 
             modelBuilder.Entity("IOASYS_IMDb.Models.Usuario", b =>
                 {
-                    b.Navigation("Voto");
+                    b.Navigation("Votacao");
                 });
 #pragma warning restore 612, 618
         }

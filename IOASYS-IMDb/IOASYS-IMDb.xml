@@ -68,6 +68,47 @@
              <param name="id">objeto Ator</param>
              <returns>O objeto Ator excluido</returns>
         </member>
+        <member name="M:IOASYS_IMDb.Controllers.InformationController.Get">
+            <summary>
+            Exibe informações da Versão do Sistema
+            </summary>
+            <returns>Objetos AtorFilme</returns>
+        </member>
+        <member name="M:IOASYS_IMDb.Controllers.LoginController.Login(IOASYS_IMDb.Authentication.LoginModel)">
+             <summary>
+             Realiza o Login no sistema
+             </summary>
+             <remarks>
+             Exemplo de request:
+            
+                 PUT /api/Login
+                 {
+                    "username": "string",
+                    "password": "string"
+                   
+                 }
+             </remarks>
+             <param name="model">objeto Ator</param>
+             <returns>Retorno Autorização</returns>
+        </member>
+        <member name="M:IOASYS_IMDb.Controllers.UsuarioController.Register(IOASYS_IMDb.Authentication.RegisterModel)">
+             <summary>
+             Inclui um novo Usuario
+             </summary>
+             <remarks>
+             Exemplo de request:
+            
+                 POST api/AtorFilme
+                 {
+                    "username": "string",
+                   "email": "string",
+                    "password": "string"
+                           ///       
+                 }
+             </remarks>
+             <param name="model">objeto Filme</param>
+             <returns>O objeto Filme incluido</returns>
+        </member>
         <member name="M:WebApiFilmesIMDb.Controllers.AtorFilmeController.Get">
             <summary>
             Obtem todos os AtorFilme
@@ -82,6 +123,8 @@
             <returns>Objetos AtorFilme</returns>
         </member>
         <!-- Badly formed XML comment ignored for member "M:WebApiFilmesIMDb.Controllers.AtorFilmeController.Post(IOASYS_IMDb.Models.AtorFilme)" -->
+        <!-- Badly formed XML comment ignored for member "M:WebApiFilmesIMDb.Controllers.AtorFilmeController.Put(System.Int32,IOASYS_IMDb.Models.AtorFilme)" -->
+        <!-- Badly formed XML comment ignored for member "M:WebApiFilmesIMDb.Controllers.AtorFilmeController.Delete(System.Int32)" -->
         <member name="M:WebApiFilmesIMDb.Controllers.CategoriaController.Get">
             <summary>
             Obtem todos as Categorias
@@ -216,6 +259,74 @@
             </summary>
             <returns>ObjetosFilme</returns>
         </member>
+        <member name="M:WebApiFilmesIMDb.Controllers.FilmesController.GetFilmesAtorNome(System.String)">
+             <summary>
+            Obtem um Filme pelo nome do Ator
+             </summary>
+             <remarks>
+             Exemplo de request:
+            
+                 Get /api/Filmes/FilmesNomeAtor
+                 {
+                   
+                    "nome": "Nome do Ator com 150 caracteres no maximo"
+                   
+                 }
+             </remarks>
+             <param name="nome">objeto Filme</param>
+             <returns>O objeto Filme</returns>
+        </member>
+        <member name="M:WebApiFilmesIMDb.Controllers.FilmesController.GetFilmesDiretor(System.String)">
+             <summary>
+            Obtem um Filme pelo nome do Diretor
+             </summary>
+             <remarks>
+             Exemplo de request:
+            
+                 Get /api/Filmes/FilmesDiretor
+                 {
+                   
+                    "nome": "Nome do Diretor com 150 caracteres no maximo"
+                   
+                 }
+             </remarks>
+             <param name="nome">objeto Filme</param>
+             <returns>O objeto Filme</returns>
+        </member>
+        <member name="M:WebApiFilmesIMDb.Controllers.FilmesController.GetFilmesGenero(System.String)">
+             <summary>
+            Obtem um Filme pelo nome da categira 
+             </summary>
+             <remarks>
+             Exemplo de request:
+            
+                 Get /api/Filmes/FilmesGenero
+                 {
+                   
+                    "nome": "Nome da Categoria com 150 caracteres no maximo"
+                   
+                 }
+             </remarks>
+             <param name="nome">objeto Filme</param>
+             <returns>O objeto Filme</returns>
+        </member>
+        <member name="M:WebApiFilmesIMDb.Controllers.FilmesController.GetFilmesMedia(System.String)">
+             <summary>
+            Obtem um Filme pelo Titulo e retorna a media dos votos recebidos e demais informações
+             </summary>
+             <remarks>
+             Exemplo de request:
+            
+                 Get /api/Filmes/FilmesMedia
+                 {
+                   
+                    "nome": "Nome do Titulo com 150 caracteres no maximo"
+                   
+                 }
+             </remarks>
+             <param name="nome">objeto Filme</param>
+             <returns>O objeto Filme</returns>
+        </member>
         <member name="M:WebApiFilmesIMDb.Controllers.FilmesController.Get(System.Int32)">
             <summary>
             Obtem um Filme pelo seu Id
@@ -225,7 +336,7 @@
         </member>
         <member name="M:WebApiFilmesIMDb.Controllers.FilmesController.Post(IOASYS_IMDb.Models.Filme)">
              <summary>
-             Inclui um novo Filme
+             Inclui um novo Filme Necessario ser usuario Admin
              </summary>
              <remarks>
              Exemplo de request:
@@ -245,6 +356,7 @@
              </remarks>
              <param name="filme">objeto Filme</param>
              <returns>O objeto Filme incluido</returns>
+             
         </member>
         <member name="M:WebApiFilmesIMDb.Controllers.FilmesController.Put(System.Int32,IOASYS_IMDb.Models.Filme)">
              <summary>
@@ -253,7 +365,7 @@
              <remarks>
              Exemplo de request:
             
-                 PUT api/AtorFilme
+                 PUT api/Filme/id
                  {
                     "FilmeId": 1,
                     "titulo": "titulo do filme com 80 caracteres no maximo",

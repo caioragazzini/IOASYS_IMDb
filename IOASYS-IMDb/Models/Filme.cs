@@ -4,6 +4,9 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 
+
+
+
 namespace IOASYS_IMDb.Models
 {
     [Table("Filme")]
@@ -12,6 +15,7 @@ namespace IOASYS_IMDb.Models
         public Filme()
         {
             AtorFilmes = new Collection<AtorFilme>();
+            Voto = new Collection<Voto>();
         }
 
         [Key]
@@ -31,7 +35,7 @@ namespace IOASYS_IMDb.Models
         [Required]
         public int AnoLancamento { get; set; }
         
-        public int Nota { get; set; }
+      
         public Categoria Categoria { get; set; }
         public int CategoriaId { get; set; }
 
@@ -39,7 +43,8 @@ namespace IOASYS_IMDb.Models
         public int DiretorId { get; set; }
 
         public ICollection<AtorFilme> AtorFilmes { get; set; }
+      
 
-
+        public ICollection<Voto> Voto { get; set; }
     }
 }

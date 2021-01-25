@@ -13,6 +13,11 @@ namespace IOASYS_IMDb.Controllers
     [ApiController]
     public class InformationController : ControllerBase
     {
+
+        /// <summary>
+        /// Exibe informações da Versão do Sistema
+        /// </summary>
+        /// <returns>Objetos AtorFilme</returns>
         [HttpGet]
         public IActionResult Get()
         {
